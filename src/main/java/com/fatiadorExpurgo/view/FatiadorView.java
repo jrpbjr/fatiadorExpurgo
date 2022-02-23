@@ -26,6 +26,8 @@ public class FatiadorView extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public FatiadorView() {
+		setTitle("fatiador expurgo");
+		setClosable(true);
 		setBounds(100, 100, 450, 300);
 
 	}
