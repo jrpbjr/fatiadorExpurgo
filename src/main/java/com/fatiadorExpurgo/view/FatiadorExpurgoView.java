@@ -19,6 +19,9 @@ public class FatiadorExpurgoView {
 
 	private JFrame frame;
 	private final Action action = new SwingAction();
+	
+	// JinternalFrame
+	FatiadorView fatiadorView = new FatiadorView();
 
 	/**
 	 * Launch the application.
@@ -61,6 +64,7 @@ public class FatiadorExpurgoView {
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
+		/*
 		// JinternalFrame
 		FatiadorView fatiadorView = new FatiadorView();
 		//fatiadorView.setNormalBounds(null);
@@ -73,7 +77,7 @@ public class FatiadorExpurgoView {
 		} catch (PropertyVetoException e1) {
 			e1.printStackTrace();
 		}
-		
+		*/
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("New menu item");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
@@ -95,6 +99,27 @@ public class FatiadorExpurgoView {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("New menu item");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				// JinternalFrame
+				//FatiadorView fatiadorView = new FatiadorView();
+				
+				//fatiadorView.setNormalBounds(null);
+				fatiadorView.setBounds(135,80, fatiadorView.getWidth(), fatiadorView.getHeight());
+				fatiadorView.setVisible(true);
+				desktopPane.add(fatiadorView);
+				try
+				{
+					fatiadorView.setSelected(true);
+				} catch (PropertyVetoException e1) {
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JSeparator separator = new JSeparator();
