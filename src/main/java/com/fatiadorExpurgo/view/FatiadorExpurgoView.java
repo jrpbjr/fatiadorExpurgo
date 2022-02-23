@@ -1,11 +1,14 @@
 package com.fatiadorExpurgo.view;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -55,6 +58,23 @@ public class FatiadorExpurgoView {
 		JMenu mnNewMenu = new JMenu("File");
 		menuBar.add(mnNewMenu);
 		
+		JDesktopPane desktopPane = new JDesktopPane();
+		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		
+		// JinternalFrame
+		FatiadorView fatiadorView = new FatiadorView();
+		//fatiadorView.setNormalBounds(null);
+		fatiadorView.setBounds(135,80, fatiadorView.getWidth(), fatiadorView.getHeight());
+		fatiadorView.setVisible(true);
+		desktopPane.add(fatiadorView);
+		try
+		{
+			fatiadorView.setSelected(true);
+		} catch (PropertyVetoException e1) {
+			e1.printStackTrace();
+		}
+		
+		
 		JMenuItem mntmNewMenuItem = new JMenuItem("New menu item");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -87,6 +107,9 @@ public class FatiadorExpurgoView {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_2);
+		
+		//JDesktopPane desktopPane = new JDesktopPane();
+		//frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 	}
 
 	public JFrame getFrame() {
