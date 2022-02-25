@@ -1,31 +1,41 @@
 package com.fatiadorExpurgo.view;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.EventQueue;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JSplitPane;
-import java.awt.BorderLayout;
-import javax.swing.JTree;
-import javax.swing.JTable;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
+import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
-import java.awt.Insets;
-import java.awt.GridLayout;
+import javax.swing.JTree;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
 
 public class FatiadorView extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textField;
+	
+	Container c;
 	private JTable table;
+	
+	//String[] columnHeads = {"File Name", "Size (in Bytes)", "Read Only", "Hidden", "Path" };
+	//String[][] rowData = {{"", "", "", "", ""}};
 
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
+	
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -36,7 +46,7 @@ public class FatiadorView extends JInternalFrame {
 				}
 			}
 		});
-	}*/
+	}
 
 	/**
 	 * Create the frame.
@@ -97,11 +107,28 @@ public class FatiadorView extends JInternalFrame {
 		JSplitPane splitPane = new JSplitPane();
 		panel_2.add(splitPane);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		splitPane.setRightComponent(scrollPane);
+		
 		table = new JTable();
-		splitPane.setRightComponent(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"File Name", "Size (in Bytes)", "Read Only", "Hidden", "Path"
+			}
+		));
+		scrollPane.setViewportView(table);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		splitPane.setLeftComponent(scrollPane_1);
 		
 		JTree tree = new JTree();
-		splitPane.setLeftComponent(tree);
+		scrollPane_1.setViewportView(tree);
 
 	}
 

@@ -1,6 +1,13 @@
 package com.fatiaddoExpurgo;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
+
+import java.awt.GraphicsEnvironment;
+import java.awt.GraphicsDevice;
+
+//sun.awt.CGraphicsEnvironment
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -10,7 +17,41 @@ import com.fatiadorExpurgo.view.FatiadorExpurgoView;
 public class Principal {
 
 	public static void main(String[] args) {
+		
+		//java swing changing the size relative to the frame size, not the monitor size
+		
+		//JPanel positions and sizes changes according to screensize
+		
+		//How to change window size according to screen size in Java
+		
+		// java - get screen size using the Toolkit class
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
+		
+		// the screen height
+		//screenSize.getHeight();
+
+		// the screen width
+		//screenSize.getWidth();
+		
+		//int screenHeight = screenSize.height;
+		//int screenWidth = screenSize.width;
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		
+		System.out.println(width);
+		System.out.println(height);
+		
+		//Em uma configuração de vários monitores, você deve usar isto:
+
+			GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+			int widthgd = gd.getDisplayMode().getWidth();
+			int heightgd = gd.getDisplayMode().getHeight();
+	
+			System.out.println(widthgd);
+			System.out.println(heightgd);
 		
 		try {
 			// Set System L&F
